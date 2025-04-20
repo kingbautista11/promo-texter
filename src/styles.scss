@@ -1,5 +1,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
+
 @use "bootstrap/scss/bootstrap";
 @use "@angular/material" as mat;
 
@@ -24,4 +25,15 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.margin-top {
+  margin-top: 20px;
+}
+.text-center {
+  text-align: center;
 }

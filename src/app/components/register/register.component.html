@@ -1,1 +1,133 @@
-<p>register works!</p>
+<!-- sign-up.component.html -->
+
+<div class="form-container shadow p-3 mb-5 rounded">
+  <h1 class="center pb-4 pt-2">Sign Up</h1>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+    <div class="d-flex flex-column align-items-center w-100">
+      <div>
+        <label for="name" class="pb-2 pt-2" [class.text-danger]="showNameError"
+          >Name</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          id="name"
+          style="margin-bottom: 10px"
+          autocomplete="off"
+        />
+        <div class="text-danger error-msg" *ngIf="showNameError">
+          {{ nameErrorMessage }}
+        </div>
+      </div>
+      <div>
+        <label
+          for="email"
+          class="pb-2 pt-2"
+          [class.text-danger]="showEmailError || emailInvalid"
+          >Email</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          id="email"
+          style="margin-bottom: 10px"
+          autocomplete="off"
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        />
+        <div
+          class="text-danger error-msg"
+          *ngIf="showEmailError || emailInvalid"
+        >
+          {{ emailErrorMessage }}
+        </div>
+      </div>
+      <div>
+        <label
+          for="password"
+          class="pb-2 pt-2"
+          [class.text-danger]="showPasswordError"
+          >Password</label
+        >
+        <div class="input-group">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control password-input"
+            formControlName="password"
+            id="password"
+            style="margin-bottom: 10px"
+            autocomplete="new-password"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+            (focus)="showPasswordRequirements = true"
+            (blur)="showPasswordRequirements = false"
+            (invalid)="passwordErrorMessage = 'Invalid Password'"
+          />
+          <div class="input-group-append">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="showPassword = !showPassword"
+              style="width: 8vw"
+            >
+              {{ showPassword ? "Hide" : "Show" }}
+            </button>
+          </div>
+        </div>
+        <div class="text-danger error-msg" *ngIf="showPasswordError">
+          {{ passwordErrorMessage }}
+        </div>
+        <div
+          *ngIf="showPasswordRequirements"
+          class="password-requirements"
+          style="font-size: 12px"
+        >
+          Password requirements:
+          <ul>
+            <li>At least 8 characters long</li>
+            <li>At least 1 lowercase letter</li>
+            <li>At least 1 uppercase letter</li>
+            <li>At least 1 digit</li>
+            <li>At least 1 special character (e.g. &#64;, $, !, %, *, ?, &)</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <label
+          for="confirmPassword"
+          class="pb-2 pt-2"
+          [class.text-danger]="showConfirmError"
+          >Confirm Password</label
+        >
+        <div class="input-group">
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            class="form-control password-input"
+            formControlName="confirmPassword"
+            id="confirmPassword"
+            style="margin-bottom: 10px"
+            autocomplete="new-password"
+          />
+          <div class="input-group-append">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="showConfirmPassword = !showConfirmPassword"
+              style="width: 8vw"
+            >
+              {{ showConfirmPassword ? "Hide" : "Show" }}
+            </button>
+          </div>
+        </div>
+        <div class="text-danger error-msg" *ngIf="showConfirmError">
+          {{ confirmErrorMessage }}
+        </div>
+      </div>
+      <div class="pt-4">
+        <div class="center margin-top pb-4">
+          <button class="btn btn-primary" type="submit">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,9 +1,17 @@
 mat-toolbar {
   justify-content: space-between;
 }
-
+.link-text {
+  text-decoration: none;
+}
+.link-text:hover {
+  color: #000 !important;
+}
 .btn-login {
   border: none;
+  &:hover {
+    color: #000 !important;
+  }
 }
 mat-icon {
   vertical-align: middle;

@@ -1,14 +1,44 @@
-<h1>Login</h1>
-<form [formGroup]="loginForm">
-  <mat-form-field>
-    <input matInput placeholder="Email" formControlName="email" />
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Password"
-      formControlName="email"
-      type="password"
-    />
-  </mat-form-field>
-</form>
+<div class="form-container shadow p-3 mb-5 rounded">
+  <h1 class="center pb-4 pt-2">Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <div class="d-flex flex-column align-items-center w-100">
+      <div>
+        <label for="email" class="pb-2 pt-2">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          id="email"
+          style="margin-bottom: 10px"
+        />
+        <div *ngIf="showEmailError" class="text-danger">Email is required</div>
+      </div>
+
+      <div>
+        <label for="password" class="pb-2 pt-2">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          id="password"
+          style="margin-bottom: 10px"
+        />
+        <div *ngIf="showPasswordError" class="text-danger">
+          Password is required
+        </div>
+      </div>
+    </div>
+    <div class="pt-4">
+      <div class="center margin-top">
+        <button class="btn btn-primary" type="submit" (click)="onLogin()">
+          Login
+        </button>
+      </div>
+      <span class="center mt-3"
+        >New User?<a class="text-link text-decoration-none" href="/register">
+          Sign Up</a
+        ></span
+      >
+    </div>
+  </form>
+</div>

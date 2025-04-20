@@ -1,14 +1,28 @@
 <mat-toolbar class="bg-primary text-white">
-  Welcome!
+  <a routerLink="/" class="text-white link-text">Welcome!</a>
 
-  <button
-    mat-button
-    class="bg-primary text-white btn-login"
-    routerLink="/login"
+  <ng-container
+    *ngIf="authService.currentUser$ | async as user; else loginButton"
   >
-    <mat-icon>login</mat-icon>
-    Login
-  </button>
+    <button
+      mat-button
+      class="bg-primary text-white btn-login"
+      (click)="logout()"
+    >
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </ng-container>
+  <ng-template #loginButton>
+    <button
+      mat-button
+      class="bg-primary text-white btn-login"
+      routerLink="/login"
+    >
+      <mat-icon>login</mat-icon>
+      Login
+    </button>
+  </ng-template>
 </mat-toolbar>
 <div class="container">
   <router-outlet></router-outlet>
