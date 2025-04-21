@@ -1,53 +1,65 @@
-.form-control {
-  width: 280px;
+.error-msg {
+  font-size: 10px;
 }
-
-@media only screen and (max-width: 768px) {
-  .form-control {
-    width: 200px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .form-control {
-    width: 150px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .form-control {
-    width: 100px;
-  }
-}
-
 .form-container {
   display: block;
   max-width: 400px;
   margin: auto;
-  background: #eceff1;
+  background: #169976;
   padding: 50px;
   border-radius: 10px;
-  height: 420px;
+
   overflow-y: auto;
+}
+.form-control {
+  width: 35vw;
+  max-width: 250px;
+}
+
+.password-input {
+  width: 30vw !important;
+  max-width: 210px !important;
+}
+
+.bi-eye,
+.bi-eye-fill {
+  color: #666;
+}
+
+.bi-eye:hover,
+.bi-eye-fill:hover {
+  color: #169976;
 }
 
 @media only screen and (max-width: 768px) {
   .form-container {
+    max-width: 90%;
     padding: 20px;
-    max-width: 300px;
+  }
+  .form-control {
+    width: 100%;
+  }
+  .password-input {
+    width: 100% !important;
+  }
+  .input-group {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .form-container {
     padding: 10px;
-    max-width: 250px;
   }
-}
-
-@media only screen and (max-width: 320px) {
-  .form-container {
-    padding: 5px;
-    max-width: 200px;
+  .form-control {
+    font-size: 14px;
+  }
+  .input-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .input-group-text {
+    margin-top: 5px;
   }
 }

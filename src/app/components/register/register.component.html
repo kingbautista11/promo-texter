@@ -1,35 +1,41 @@
 <!-- sign-up.component.html -->
 
 <div class="form-container shadow p-3 mb-5 rounded">
-  <h1 class="center pb-4 pt-2">Sign Up</h1>
+  <h1 class="center pb-4 pt-2 upheavel text-outline text-white">Sign Up</h1>
   <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
     <div class="d-flex flex-column align-items-center w-100">
       <div>
-        <label for="name" class="pb-2 pt-2" [class.text-danger]="showNameError"
+        <label
+          for="name"
+          class="pb-2 pt-2 text-outline text-white vcr"
+          [class.text-danger]="showNameError"
           >Name</label
         >
         <input
           type="text"
-          class="form-control"
+          class="form-control vcr"
           formControlName="name"
           id="name"
           style="margin-bottom: 10px"
           autocomplete="off"
         />
-        <div class="text-danger error-msg" *ngIf="showNameError">
-          {{ nameErrorMessage }}
+        <div
+          class="text-white error-msg text-outline vcr"
+          *ngIf="showNameError"
+        >
+          {{ nameErrorMessage }} <span class="text-danger">*</span>
         </div>
       </div>
       <div>
         <label
           for="email"
-          class="pb-2 pt-2"
+          class="pb-2 pt-2 text-outline text-white vcr"
           [class.text-danger]="showEmailError || emailInvalid"
           >Email</label
         >
         <input
           type="email"
-          class="form-control"
+          class="form-control vcr"
           formControlName="email"
           id="email"
           style="margin-bottom: 10px"
@@ -37,23 +43,23 @@
           pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         />
         <div
-          class="text-danger error-msg"
+          class="text-white error-msg text-outline vcr"
           *ngIf="showEmailError || emailInvalid"
         >
-          {{ emailErrorMessage }}
+          {{ emailErrorMessage }} <span class="text-danger">*</span>
         </div>
       </div>
       <div>
         <label
           for="password"
-          class="pb-2 pt-2"
+          class="pb-2 pt-2 text-outline text-white vcr"
           [class.text-danger]="showPasswordError"
           >Password</label
         >
         <div class="input-group">
           <input
             [type]="showPassword ? 'text' : 'password'"
-            class="form-control password-input"
+            class="form-control password-input vcr"
             formControlName="password"
             id="password"
             style="margin-bottom: 10px"
@@ -62,70 +68,77 @@
             (focus)="showPasswordRequirements = true"
             (blur)="showPasswordRequirements = false"
             (invalid)="passwordErrorMessage = 'Invalid Password'"
+            tooltipPlacement="bottom"
+            tooltip="Password requirements: 
+     	&nbsp;	&nbsp;	&nbsp;	&nbsp; - At least 8 characters long
+      	&nbsp;	&nbsp; - At least 1 lowercase letter
+      	&nbsp;	&nbsp;- At least 1 uppercase letter
+      	&nbsp;	&nbsp;- At least 1 digit
+    	&nbsp;	&nbsp; 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; - At least 1 special character (e.g. &#64;, $, !, %, *, ?, &)"
           />
-          <div class="input-group-append">
+          <span
+            class="input-group-text eye-icon"
+            style="height: 38px; width: 40px; align-items: center"
+          >
             <button
               type="button"
               class="btn btn-outline-secondary"
               (click)="showPassword = !showPassword"
-              style="width: 8vw"
+              style="border: none; background-color: transparent; padding: 0"
             >
-              {{ showPassword ? "Hide" : "Show" }}
+              <i class="bi {{ showPassword ? 'bi-eye-fill' : 'bi-eye' }}"></i>
             </button>
-          </div>
-        </div>
-        <div class="text-danger error-msg" *ngIf="showPasswordError">
-          {{ passwordErrorMessage }}
+          </span>
         </div>
         <div
-          *ngIf="showPasswordRequirements"
-          class="password-requirements"
-          style="font-size: 12px"
+          class="text-white error-msg text-white text-outline vcr"
+          *ngIf="showPasswordError"
         >
-          Password requirements:
-          <ul>
-            <li>At least 8 characters long</li>
-            <li>At least 1 lowercase letter</li>
-            <li>At least 1 uppercase letter</li>
-            <li>At least 1 digit</li>
-            <li>At least 1 special character (e.g. &#64;, $, !, %, *, ?, &)</li>
-          </ul>
+          {{ passwordErrorMessage }} <span class="text-danger">*</span>
         </div>
       </div>
       <div>
         <label
           for="confirmPassword"
-          class="pb-2 pt-2"
+          class="pb-2 pt-2 text-outline text-white vcr"
           [class.text-danger]="showConfirmError"
           >Confirm Password</label
         >
         <div class="input-group">
           <input
             [type]="showConfirmPassword ? 'text' : 'password'"
-            class="form-control password-input"
+            class="form-control password-input vcr"
             formControlName="confirmPassword"
             id="confirmPassword"
             style="margin-bottom: 10px"
             autocomplete="new-password"
           />
-          <div class="input-group-append">
+          <span
+            class="input-group-text eye-icon"
+            style="height: 38px; width: 40px; align-items: center"
+          >
             <button
               type="button"
               class="btn btn-outline-secondary"
               (click)="showConfirmPassword = !showConfirmPassword"
-              style="width: 8vw"
+              style="border: none; background-color: transparent; padding: 0"
             >
-              {{ showConfirmPassword ? "Hide" : "Show" }}
+              <i
+                class="bi {{ showConfirmPassword ? 'bi-eye-fill' : 'bi-eye' }}"
+              ></i>
             </button>
-          </div>
+          </span>
         </div>
-        <div class="text-danger error-msg" *ngIf="showConfirmError">
-          {{ confirmErrorMessage }}
+        <div
+          class="text-danger error-msg text-white text-outline vcr"
+          *ngIf="showConfirmError"
+        >
+          {{ confirmErrorMessage }} <span class="text-danger">*</span>
         </div>
       </div>
       <div class="pt-4">
         <div class="center margin-top pb-4">
-          <button class="btn btn-primary" type="submit">Sign Up</button>
+          <button class="btn btn-dark vcr" type="submit">Sign Up</button>
         </div>
       </div>
     </div>

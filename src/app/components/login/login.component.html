@@ -1,41 +1,78 @@
 <div class="form-container shadow p-3 mb-5 rounded">
-  <h1 class="center pb-4 pt-2">Login</h1>
+  <h1 class="center pb-4 pt-2 text-white text-outline upheavel">Login</h1>
   <form [formGroup]="loginForm" (ngSubmit)="submit()">
     <div class="d-flex flex-column align-items-center w-100">
       <div>
-        <label for="email" class="pb-2 pt-2">Email</label>
+        <label
+          for="email"
+          class="pb-2 pt-2 text-white text-outline vcr"
+          [class.text-danger]="showEmailError || emailInvalid"
+          >Email</label
+        >
         <input
           type="email"
-          class="form-control"
+          class="form-control vcr"
           formControlName="email"
           id="email"
           style="margin-bottom: 10px"
         />
-        <div *ngIf="showEmailError" class="text-danger">Email is required</div>
+        <div
+          *ngIf="showEmailError"
+          class="text-white error-msg text-outline vcr"
+        >
+          Email is required <span class="text-danger">*</span>
+        </div>
       </div>
 
       <div>
-        <label for="password" class="pb-2 pt-2">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          formControlName="password"
-          id="password"
-          style="margin-bottom: 10px"
-        />
-        <div *ngIf="showPasswordError" class="text-danger">
-          Password is required
+        <label
+          for="password"
+          class="pb-2 pt-2 text-white text-outline vcr"
+          [class.text-danger]="showPasswordError"
+          >Password</label
+        >
+        <div class="input-group">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control password-input vcr"
+            formControlName="password"
+            id="password"
+            style="margin-bottom: 10px"
+          />
+          <span
+            class="input-group-text eye-icon"
+            style="height: 38px; width: 40px; align-items: center"
+          >
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="showPassword = !showPassword"
+              style="border: none; background-color: transparent; padding: 0"
+            >
+              <i class="bi {{ showPassword ? 'bi-eye-fill' : 'bi-eye' }}"></i>
+            </button>
+          </span>
+        </div>
+        <div
+          *ngIf="showPasswordError"
+          class="text-white error-msg text-outline vcr"
+        >
+          Password is required <span class="text-danger">*</span>
         </div>
       </div>
     </div>
     <div class="pt-4">
       <div class="center margin-top">
-        <button class="btn btn-primary" type="submit" (click)="onLogin()">
+        <button class="btn btn-dark vcr" type="submit" (click)="onLogin()">
           Login
         </button>
       </div>
-      <span class="center mt-3"
-        >New User?<a class="text-link text-decoration-none" href="/register">
+      <span class="center mt-3 mb-3 text-white text-outline vcr">
+        New User?<a
+          class="text-link text-decoration-none text-primary text-outline vcr"
+          style="margin-left: 5px"
+          href="/register"
+        >
           Sign Up</a
         ></span
       >

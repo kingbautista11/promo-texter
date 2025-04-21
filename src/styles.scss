@@ -1,8 +1,18 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-
+@use "bootstrap-icons/font/bootstrap-icons";
 @use "bootstrap/scss/bootstrap";
 @use "@angular/material" as mat;
+@font-face {
+  font-family: upheavel;
+  src: url(assets/fonts/upheavtt.ttf) format("trueType");
+}
+@font-face {
+  font-family: Pyxxl;
+  src: url(assets/fonts/Pyxxl.ttf) format("trueType");
+}
+@font-face {
+  font-family: vcr;
+  src: url(assets/fonts/vcr.ttf) format("trueType");
+}
 
 html {
   @include mat.theme(
@@ -16,11 +26,12 @@ html {
       density: 0,
     )
   );
-} /* Importing Bootstrap SCSS file. */
+}
 
 html,
 body {
   height: 100%;
+  background-color: #444444;
 }
 body {
   margin: 0;
@@ -36,4 +47,18 @@ body {
 }
 .text-center {
   text-align: center;
+}
+
+.text-color {
+  color: #1dcd9f !important;
+}
+.text-outline {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.upheavel {
+  font-family: upheavel;
+  font-size: 50px;
+}
+.vcr {
+  font-family: vcr;
 }

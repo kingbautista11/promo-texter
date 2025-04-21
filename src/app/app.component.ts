@@ -8,6 +8,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { AsyncPipe } from '@angular/common';
     RouterModule,
     NgIf,
     AsyncPipe,
+    MatMenuModule,
   ],
 
   templateUrl: './app.component.html',

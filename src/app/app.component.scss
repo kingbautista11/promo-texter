@@ -1,17 +1,22 @@
 mat-toolbar {
   justify-content: space-between;
 }
+.banner {
+  font-family: upheavel;
+  font-size: 40px;
+}
 .link-text {
   text-decoration: none;
 }
 .link-text:hover {
-  color: #000 !important;
+  color: #169976 !important;
 }
 .btn-login {
   border: none;
   &:hover {
-    color: #000 !important;
+    color: #169976 !important;
   }
+  font-family: upheavel;
 }
 mat-icon {
   vertical-align: middle;

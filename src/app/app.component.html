@@ -1,24 +1,21 @@
-<mat-toolbar class="bg-primary text-white">
-  <a routerLink="/" class="text-white link-text">Welcome!</a>
+<mat-toolbar class="bg-dark text-color">
+  <a routerLink="/" class="text-color link-text banner">Welcome!</a>
 
   <ng-container
     *ngIf="authService.currentUser$ | async as user; else loginButton"
   >
     <button
       mat-button
-      class="bg-primary text-white btn-login"
-      (click)="logout()"
+      [matMenuTriggerFor]="userMenu"
+      class="bg-dark text-color btn-login"
     >
-      <mat-icon>logout</mat-icon>
-      Logout
+      <mat-icon>account_circle</mat-icon>
+      {{ user.displayName }}
+      <mat-icon>expand_more</mat-icon>
     </button>
   </ng-container>
   <ng-template #loginButton>
-    <button
-      mat-button
-      class="bg-primary text-white btn-login"
-      routerLink="/login"
-    >
+    <button mat-button class="bg-dark text-color btn-login" routerLink="/login">
       <mat-icon>login</mat-icon>
       Login
     </button>
@@ -27,3 +24,12 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+<mat-menu #userMenu="matMenu" class="bg-dark">
+  <button mat-menu-item routerLink="/user" class="text-color">
+    <span style="font-family: vcr">Profile</span>
+  </button>
+  <button mat-menu-item (click)="logout()" class="text-color">
+    <span style="font-family: vcr">Logout</span>
+  </button>
+</mat-menu>

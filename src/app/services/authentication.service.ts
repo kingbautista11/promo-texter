@@ -5,8 +5,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  UserInfo,
 } from '@angular/fire/auth';
-import { from, switchMap, pipe } from 'rxjs';
+import { from, switchMap, pipe, Observable, of, concatMap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,5 +28,16 @@ export class AuthenticationService {
   }
   logout() {
     return from(this.auth.signOut());
+  }
+
+  updateProfile(profileData: Partial<UserInfo>): Observable<any> {
+    const user = this.auth.currentUser;
+    return of(user).pipe(
+      concatMap((user) => {
+        if (!user) throw new Error('User not found');
+
+        return updateProfile(user, profileData);
+      })
+    );
   }
 }

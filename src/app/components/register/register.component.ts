@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -11,9 +11,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 export function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -28,11 +30,11 @@ export function passwordMatchValidator(): ValidatorFn {
 }
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TooltipModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements AfterViewInit {
   signUpForm = new FormGroup(
     {
       name: new FormControl('', Validators.required),
@@ -57,13 +59,12 @@ export class RegisterComponent implements OnInit {
 
   showPassword = false;
   showConfirmPassword = false;
+
   constructor(
     private authService: AuthenticationService,
     private snackBar: MatSnackBar,
     private router: Router
   ) {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit(): void {}
   get name() {
@@ -88,12 +89,14 @@ export class RegisterComponent implements OnInit {
       next: () => {
         this.snackBar.open('Registration successful!', 'Close', {
           duration: 3000,
+          verticalPosition: 'top',
         });
         this.router.navigate(['/home']);
       },
       error: (error) => {
         this.snackBar.open(`Error: ${error.message}`, 'Close', {
           duration: 3000,
+          verticalPosition: 'top',
         });
       },
     });

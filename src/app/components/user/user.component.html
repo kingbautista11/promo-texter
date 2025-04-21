@@ -1,0 +1,21 @@
+<div
+  class="form-container shadow p-3 mb-5 rounded"
+  *ngIf="user$ | async as user"
+>
+  <h2 class="text-center text-white text-outline upheavel">Profile</h2>
+  <div class="img-container text-center pt-5">
+    <img
+      width="200"
+      height="200"
+      [src]="user.photoURL ?? '/assets/images/blank-profile.jpg'"
+      class="mx-auto d-block img-outline"
+    /><button
+      mat-mini-fab
+      (click)="inputField.click()"
+      class="rounded-circle btn-container"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <input #inputField type="file" hidden (change)="uploadImg($event, user)" />
+</div>

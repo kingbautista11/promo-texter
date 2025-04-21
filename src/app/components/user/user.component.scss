@@ -1,0 +1,21 @@
+.form-container {
+  display: block;
+  max-width: 400px;
+  height: 500px;
+  margin: auto;
+  background: #169976;
+  padding: 50px;
+  border-radius: 10px;
+}
+.img-container {
+  position: relative;
+}
+.img-outline {
+  border: 2px solid #000;
+  border-radius: 5%;
+  object-fit: cover;
+}
+.img-container > button {
+  position: block;
+  margin-top: 20px;
+}

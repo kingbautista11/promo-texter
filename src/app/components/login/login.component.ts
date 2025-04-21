@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
   showEmailError: boolean = false;
   showPasswordError: boolean = false;
 
+  emailInvalid: boolean = false;
+  showPassword = false;
   constructor(
     private authService: AuthenticationService,
     private router: Router,
@@ -58,17 +60,20 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).subscribe(
       () => {
         this.snackBar.open('Login successful!', 'Close', {
-          duration: 5000,
+          duration: 3000,
           verticalPosition: 'top',
         });
         this.router.navigate(['/home']);
       },
       (error) => {
         this.snackBar.open('Login failed. Please try again.', 'Close', {
-          duration: 5000,
+          duration: 3000,
           verticalPosition: 'top',
         });
       }
     );
+  }
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }
