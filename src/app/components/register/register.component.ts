@@ -81,26 +81,26 @@ export class RegisterComponent implements AfterViewInit {
     return this.signUpForm.get('confirmPassword');
   }
 
-  submit() {
-    if (!this.signUpForm.valid) return;
+  // submit() {
+  //   if (!this.signUpForm.valid) return;
 
-    const { name, email, password } = this.signUpForm.value;
-    this.authService.signUp(name ?? '', email ?? '', password ?? '').subscribe({
-      next: () => {
-        this.snackBar.open('Registration successful!', 'Close', {
-          duration: 3000,
-          verticalPosition: 'top',
-        });
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        this.snackBar.open(`Error: ${error.message}`, 'Close', {
-          duration: 3000,
-          verticalPosition: 'top',
-        });
-      },
-    });
-  }
+  //   const { name, email, password } = this.signUpForm.value;
+  //   this.authService.signUp(name ?? '', email ?? '', password ?? '').subscribe({
+  //     next: () => {
+  //       this.snackBar.open('Registration successful!', 'Close', {
+  //         duration: 3000,
+  //         verticalPosition: 'top',
+  //       });
+  //       this.router.navigate(['/home']);
+  //     },
+  //     error: (error) => {
+  //       this.snackBar.open(`Error: ${error.message}`, 'Close', {
+  //         duration: 3000,
+  //         verticalPosition: 'top',
+  //       });
+  //     },
+  //   });
+  // }
   onSignUp() {
     if (this.signUpForm.get('name')?.value === '') {
       this.showNameError = true;
@@ -182,12 +182,14 @@ export class RegisterComponent implements AfterViewInit {
           next: () => {
             this.snackBar.open('Registration successful!', 'Close', {
               duration: 3000,
+              verticalPosition: 'top',
             });
             this.router.navigate(['/home']);
           },
           error: (error) => {
             this.snackBar.open(`Error: ${error.message}`, 'Close', {
               duration: 3000,
+              verticalPosition: 'top',
             });
           },
         });

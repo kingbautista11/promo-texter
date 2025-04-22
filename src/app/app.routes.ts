@@ -35,7 +35,7 @@ export const routes: Routes = [
     ...canActivate(redirectToLogin),
   },
   {
-    path: 'user',
+    path: 'profile',
     component: UserComponent,
     ...canActivate(redirectToLogin),
   },

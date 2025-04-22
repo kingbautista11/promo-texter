@@ -7,14 +7,12 @@
     <img
       width="200"
       height="200"
-      [src]="user.photoURL ?? '/assets/images/blank-profile.jpg'"
+      [src]="user.photoURL ?? 'assets/images/blank-profile.jpg'"
       class="mx-auto d-block img-outline"
-    /><button
-      mat-mini-fab
-      (click)="inputField.click()"
-      class="rounded-circle btn-container"
-    >
-      <mat-icon>edit</mat-icon>
+    /><button mat-mini-fab (click)="inputField.click()" class="btn-container">
+      <label class="material-icons" style="color: #444444; margin-top: 3px"
+        >add_a_photo</label
+      >
     </button>
   </div>
   <input #inputField type="file" hidden (change)="uploadImg($event, user)" />
