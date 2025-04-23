@@ -6,7 +6,10 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 Login
 
 Register
+
 Upload Profile Photo
+
 Firebase Authentication
+
 Firebase Storage
 
